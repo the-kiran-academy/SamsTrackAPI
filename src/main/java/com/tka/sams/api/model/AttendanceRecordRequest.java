@@ -1,12 +1,12 @@
 package com.tka.sams.api.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class AttendanceRecordRequest {
-	private Long facultyId;
+	private String username;
 	private Long subjectId;
-	private LocalDateTime dateTime;
+	private String date;
+	private String time;
     private int numberOfStudents;;
 
 	private List<Long> studentIds;
@@ -15,13 +15,17 @@ public class AttendanceRecordRequest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getFacultyId() {
-		return facultyId;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFacultyId(Long facultyId) {
-		this.facultyId = facultyId;
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
+
 
 	public Long getSubjectId() {
 		return subjectId;
@@ -31,12 +35,22 @@ public class AttendanceRecordRequest {
 		this.subjectId = subjectId;
 	}
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	
+
+	public String getDate() {
+		return date;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public List<Long> getStudentIds() {

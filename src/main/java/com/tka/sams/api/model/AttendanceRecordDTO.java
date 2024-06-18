@@ -1,6 +1,5 @@
 package com.tka.sams.api.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,22 +7,22 @@ import com.tka.sams.api.entity.AttendanceRecord;
 
 public class AttendanceRecordDTO {
     private Long id;
-    private Long facultyId;
-    private String facultyName; // Assuming you want the faculty's name as well
+    private String username;
+    private String firstNme; // Assuming you want the faculty's name as well
     private Long subjectId;
     private String subjectName; // Assuming you want the subject's name as well
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
     private int numberOfStudents;
     private List<StudentDTO> students;
 
     // Constructor
     public AttendanceRecordDTO(AttendanceRecord record) {
         this.id = record.getId();
-        this.facultyId = record.getFaculty().getId();
-        this.facultyName = record.getFaculty().getName(); // Assuming Faculty entity has a getName() method
+        this.username = record.getUser().getUsername();
+        this.firstNme = record.getUser().getFirstName(); 
         this.subjectId = record.getSubject().getId();
-        this.subjectName = record.getSubject().getName(); // Assuming Subject entity has a getName() method
-        this.dateTime = record.getDateTime();
+        this.subjectName = record.getSubject().getName();
         this.numberOfStudents = record.getNumberOfStudents();
         this.students = record.getStudents().stream().map(StudentDTO::new).collect(Collectors.toList());
     }
@@ -37,23 +36,23 @@ public class AttendanceRecordDTO {
         this.id = id;
     }
 
-    public Long getFacultyId() {
-        return facultyId;
-    }
+    public String getUsername() {
+		return username;
+	}
 
-    public void setFacultyId(Long facultyId) {
-        this.facultyId = facultyId;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getFacultyName() {
-        return facultyName;
-    }
+	public String getFirstNme() {
+		return firstNme;
+	}
 
-    public void setFacultyName(String facultyName) {
-        this.facultyName = facultyName;
-    }
+	public void setFirstNme(String firstNme) {
+		this.firstNme = firstNme;
+	}
 
-    public Long getSubjectId() {
+	public Long getSubjectId() {
         return subjectId;
     }
 
@@ -69,15 +68,25 @@ public class AttendanceRecordDTO {
         this.subjectName = subjectName;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+   
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
+    public String getDate() {
+		return date;
+	}
 
-    public int getNumberOfStudents() {
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public int getNumberOfStudents() {
         return numberOfStudents;
     }
 

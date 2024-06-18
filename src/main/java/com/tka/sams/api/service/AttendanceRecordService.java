@@ -1,9 +1,8 @@
 package com.tka.sams.api.service;
 
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -30,6 +29,10 @@ public class AttendanceRecordService {
 
 	public AttendanceRecord saveAttendance(AttendanceRecord attendanceRecord) {
 
+		String id = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new java.util.Date());
+
+		attendanceRecord.setId(Long.parseLong(id));
+		
 		return dao.saveAttendance(attendanceRecord);
 	}
 }

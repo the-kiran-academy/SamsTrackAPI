@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -87,7 +88,7 @@ public class UserDao {
 		return list;
 	}
 
-	public User getUserById(String username) {
+	public User getUserByName(String username) {
 		Session session = null;
 		User user = null;
 		try {
@@ -122,6 +123,40 @@ public class UserDao {
 			session.close();
 		}
 		return null;
+	}
+
+	public List<User> getAllAdmins() {
+		Session session = null;
+		List<User> list = null;
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(User.class);
+			criteria.add(Restrictions.eq("role", "admin"));
+			list = criteria.list();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public List<User> getAllFaculties() {
+		Session session = null;
+		List<User> list = null;
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(User.class);
+			criteria.add(Restrictions.eq("role", "faculty"));
+			list = criteria.list();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return list;
 	}
 
 }

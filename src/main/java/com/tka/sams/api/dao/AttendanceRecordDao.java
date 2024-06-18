@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tka.sams.api.entity.AttendanceRecord;
-import com.tka.sams.api.entity.Faculty;
 
 @Repository
 public class AttendanceRecordDao {

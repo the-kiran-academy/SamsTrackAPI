@@ -52,7 +52,7 @@ public class UserController {
 
 	@GetMapping("/get-user-by-username/{username}")
 	public User getUserById(@PathVariable String username) {
-		return service.getUserById(username);
+		return service.getUserByName(username);
 
 	}
 
@@ -60,6 +60,16 @@ public class UserController {
 	public List<User> getAllUser() {
 		return service.getAllUser();
 
+	}
+	
+	@GetMapping("/get-all-admin")
+	public List<User> getAllAdmins(){
+	return service.getAllAdmins();
+	}
+	
+	@GetMapping("/get-all-faculty")
+	public List<User> getAllFaculties(){
+	return service.getAllFaculties();
 	}
 
 	@DeleteMapping("/delete-user-by-username")

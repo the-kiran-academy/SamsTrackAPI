@@ -1,6 +1,5 @@
 package com.tka.sams.api.entity;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,19 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedAttributeNode;
-import javax.persistence.NamedEntityGraph;
 
 
 @Entity
 public class AttendanceRecord {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    @JoinColumn(name = "faculty")
+    private User user;
     
     private int numberOfStudents;;
     
@@ -32,7 +28,8 @@ public class AttendanceRecord {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -66,12 +63,13 @@ public class AttendanceRecord {
 		this.numberOfStudents = numberOfStudents;
 	}
 
-	public Faculty getFaculty() {
-		return faculty;
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Subject getSubject() {
@@ -82,14 +80,24 @@ public class AttendanceRecord {
 		this.subject = subject;
 	}
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
+	
+
+
+	public String getDate() {
+		return date;
 	}
 
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public List<Student> getStudents() {
 		return students;

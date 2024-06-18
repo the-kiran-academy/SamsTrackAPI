@@ -23,8 +23,8 @@ public class UserService {
 		return dao.registerUser(user);
 	}
 
-	public User getUserById(String username) {
-		return dao.getUserById(username);
+	public User getUserByName(String username) {
+		return dao.getUserByName(username);
 	}
 
 	public List<User> getAllUser() {
@@ -37,6 +37,14 @@ public class UserService {
 
 	public String deleteUserById(String username) {
 		return dao.deleteUserById(username);
+	}
+
+	public List<User> getAllAdmins() {
+		return dao.getAllAdmins();
+	}
+	
+	public List<User> getAllFaculties() {
+		return dao.getAllFaculties();
 	}
 
 }
